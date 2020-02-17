@@ -1,4 +1,5 @@
-Date, Confirmed, Suspected, Recovered, Deaths, Severe
+Date,Confirmed,Suspected,Recovered,Deaths,Severe
+20200216, 58182, 4826, 6639, 1696,  4826
 20200215, 56249, 5243, 5623, 1596, 10396
 20200214, 54406, 5534, 4774, 1457, 10152
 20200213, 51986, 6169, 3862, 1318, 9278
