@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-cn = pd.read_csv('../DA/data/ncp-cn.csv',index_col='Date',parse_dates=True)
-hb = pd.read_csv('../DA/data/ncp-hb.csv',index_col='Date',parse_dates=True)
+cn = pd.read_csv('./data/ncp-cn.csv',index_col='Date',parse_dates=True)
+hb = pd.read_csv('./data/ncp-hb.csv',index_col='Date',parse_dates=True)
 
 ts = cn.sort_index().index[1:]
 con = cn['Confirmed'].sort_index().values[1:]
