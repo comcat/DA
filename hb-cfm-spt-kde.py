@@ -47,10 +47,10 @@ par.bar(xhb.index, xhb['Confirmed'].values, alpha=0.6, color='#0099cc', label='C
 h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.35
 px = pd.Series(x)
-px.plot.kde(bw_method=h1, color='#0fa1d3', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9)
-px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9)
+px.plot.kde(bw_method=h1, color='#0fa1d3', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
+px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.9)
 
-host.set_ylim(ymin=0.0002)
+host.set_ylim(ymin=0, ymax=0.2)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
@@ -77,8 +77,8 @@ par.bar(xhb.index, xhb['Suspected'].values, alpha=0.6, color='C8', label='Suspec
 h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.35
 px = pd.Series(x)
-px.plot.kde(bw_method=h1, color='C8', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9)
-px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9)
+px.plot.kde(bw_method=h1, color='C8', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
+px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.9)
 
 host.set_ylim(ymin=0.0002)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
@@ -108,11 +108,11 @@ par.bar(xhb.index, xhb['Suspected'].values, bottom=xhb['Confirmed'].values, alph
 h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.35
 px = pd.Series(x)
-px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9)
-px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9)
+px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
+px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.9)
 
 
-host.set_ylim(ymin=0.0002)
+host.set_ylim(ymin=0, ymax=0.14)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
