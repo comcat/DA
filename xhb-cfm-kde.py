@@ -45,14 +45,14 @@ x = xhb.index.repeat(xhb['Confirmed'])
 #plt.hist(x, bins=bns, rwidth=0.9, alpha=0.4, density=True, color='C8')
 par.bar(xhb.index, xhb['Confirmed'].values, alpha=0.6, color='#0099cc', label='Confirmed')
 
-h1 = len(x)**(-1.0/5.0)
+h1 = len(x)**(-1.0/5.0) + 0.00
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.35 - 0.3
 px = pd.Series(x)
 px.plot.kde(bw_method=h1, color='#0fa1d3', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
 px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.9)
 
-#host.set_ylim(ymin=0.0002)
-host.set_ylim(ymin=0)
+host.set_ylim(ymin=0, ymax=0.0725)
+#host.set_ylim(ymin=0)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
