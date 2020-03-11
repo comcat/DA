@@ -22,7 +22,7 @@ dea_hb = hb['Deaths'].sort_index().values[1:]
 plt.figure(figsize=(12,28))
 
 plt.subplot(211)
-plt.title('Cure Rate (%)')
+plt.title('Crude Cure Ratio (%)')
 plt.plot(ts[p:], ((rec-rec_hb)/(con-con_hb)*100)[p:], 'C2', label='Outside Hubei',marker='o')
 plt.plot(ts[p:], (rec_hb/con_hb*100)[p:], 'C9', label='Hubei',marker='o')
 plt.ylabel('%',{'fontsize':14})
@@ -30,7 +30,7 @@ plt.grid()
 plt.legend()
 
 plt.subplot(212)
-plt.title('Fatality Rate (%)')
+plt.title('Crude Case Fatality Ratio (%)')
 plt.plot(ts[p:], ((dea-dea_hb)/(con-con_hb)*100)[p:], 'C1', label='Outside Hubei',marker='o')
 plt.plot(ts[p:], (dea_hb/con_hb*100)[p:], 'C8', label='Hubei',marker='o')
 plt.ylabel('%',{'fontsize':14})
