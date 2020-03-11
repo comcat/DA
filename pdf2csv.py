@@ -57,15 +57,14 @@ for page in range(start_page, start_page+page_num):
 	if page == start_page:
 		df_tmp = pd.DataFrame(ta[1:], columns=ta[0])
 
-		#df_tmp.columns = [ col_tmp.replace('\n','') for col_tmp in df_tmp.columns ]
-		for col_tmp in df_tmp.columns:
-			if col_tmp:
-				col_tmp.replace('\n','')
-				tab2_cols.append(col_tmp)
-			else:
-				tab2_cols.append(' ')
-
+		df_tmp.columns = [ col_tmp.replace('\n','') for col_tmp in df_tmp.columns ]
 		tab2_cols = df_tmp.columns
+		#for col_tmp in df_tmp.columns:
+		#	if col_tmp:
+		#		col_tmp.replace('\n','')
+		#		tab2_cols.append(col_tmp)
+		#	else:
+		#		tab2_cols.append(' ')
 	else:
 		df_tmp = pd.DataFrame(ta)
 		df_tmp.columns = tab2_cols
