@@ -55,7 +55,7 @@ hb_end_day = hb_day_range[il-1].strftime('%m/%d')
 host = host_subplot(111)
 par = host.twinx()
 
-plt.title('New confirmed cases of COVID-19 (Hubei vs. Italy)')
+plt.title('New confirmed cases of COVID-19 (Italy vs. Hubei)')
 
 #bns=np.arange(-0.5,l+0.5,1)
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
