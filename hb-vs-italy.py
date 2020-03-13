@@ -10,11 +10,13 @@ from mpl_toolkits.axes_grid1 import host_subplot
 
 plt.figure(figsize=(12,40))
  
-hb = pd.read_csv("./data/ncp-hb-newx.csv", skipinitialspace=True, index_col='Date', parse_dates=True)
+hb = pd.read_csv("./data/ncp-hb-new.csv", skipinitialspace=True, index_col='Date', parse_dates=True)
 it = pd.read_csv("./data/covid-19-who/Italy.csv", skipinitialspace=True, index_col='Date', parse_dates=True)
 
 hbn = hb['Confirmed']
 itn = it['New Confirmed']
+
+hbn['2020-02-12'] = 1508	# Lab-confirmed cases, filter the Clinically diagnosed (exception number)
 
 hbn = hbn[:-1]		# start at 2020-01-10 vs. start at 2020-02-17
 itn = itn[:-17]
@@ -67,17 +69,17 @@ par.bar(itn.index+w, itn.values, width=w, alpha=1, color='C1', label='  Italy: '
 
 x = hbn.index.repeat(hbn)
 h1 = len(x)**(-1.0/5.0)
-h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.55
+h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.79
 px = pd.Series(x)
-px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
-#px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.6)
+#px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
+px.plot.kde(bw_method=h2, color='C2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.4)
 
 host.set_ylim(ymin=0, ymax=0.09)
 host.set_ylabel('Probability (New / Total)')
 
-par.set_ylabel('Number of new confirmed cases of COVID-19')
+par.set_ylabel('Number of new confirmed cases')
 
-plt.xlim(xmin=0, xmax=60)
+plt.xlim(xmin=0, xmax=65)
 
 #plt.ylim(ymax=3000)
 
