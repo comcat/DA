@@ -21,7 +21,7 @@ hbn['2020-02-12'] = 1508	# Lab-confirmed cases, filter the Clinically diagnosed 
 hbn = hbn[:-1]		# start at 2020-01-10 (1/15) vs. start at 2020-02-29 (3/5)
 itn = itn[:-28]
 hb_start_day = '2020-01-10'
-it_start_day = '2020-02-29'
+it_start_day = '2020-02-28'
 
 #hbn = hbn[:-5]		# start at 2020-01-14 vs. start at 2020-02-22
 #itn = itn[:-22]
@@ -55,16 +55,16 @@ hb_end_day = hb_day_range[il-1].strftime('%m/%d')
 host = host_subplot(111)
 par = host.twinx()
 
-plt.title('New confirmed cases of COVID-19 (United Kingdom vs. Hubei)')
+plt.title('New confirmed cases of COVID-19 (United Kingdom vs. Hubei)\n', {'fontsize':13, 'fontweight':'bold','color': '#0b0c0c', 'verticalalignment':'top'})
 
 #bns=np.arange(-0.5,l+0.5,1)
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
 w = 0.5
 # C1, C8 #A7C957
-par.bar(hbn.index, hbn.values, width=0.5, alpha=0.8, color='#DFDFE3', label='Hubei: '+hb_start_day+'~'+hb_end_day)
-#par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#FA9500', label='United Kingdom')
-par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#E25A53', label='     UK: '+it_start_day+'~'+it_end_day)
-#par.bar(itn.index+w, itn.values, width=w, alpha=0.95, color='#BC4749', label='United Kingdom')
+#par.bar(hbn.index, hbn.values, width=0.5, alpha=0.8, color='#DFDFE3', label='Hubei: '+hb_start_day+'~'+hb_end_day)
+#par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#1d70b8', label='     UK: '+it_start_day+'~'+it_end_day)
+par.bar(hbn.index, hbn.values, width=0.5, alpha=0.1, color='#1d70b8', label='Hubei: '+hb_start_day+'~'+hb_end_day)
+par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#d5281b', label='     UK: '+it_start_day+'~'+it_end_day)
 
 
 x = hbn.index.repeat(hbn)

@@ -57,19 +57,19 @@ par = host.twinx()
 
 plt.title('New confirmed cases of COVID-19 (France vs. Hubei)')
 
-#bns=np.arange(-0.5,l+0.5,1)
-#par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
-w = 0.5
-# C1, C8 #A7C957
-par.bar(hbn.index, hbn.values, width=0.5, alpha=0.7, color='#DFDFE2', label=' Hubei: '+hb_start_day+'~'+hb_end_day)
-par.bar(itn.index+w, itn.values, width=w, alpha=0.9, color='#2b92e4', label='France: '+it_start_day+'~'+it_end_day)
-
-
 x = hbn.index.repeat(hbn)
 h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.79
 px = pd.Series(x)
 px.plot.kde(bw_method=h2, color='#DFDFE2', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.7)
+
+#bns=np.arange(-0.5,l+0.5,1)
+#par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
+w = 0.5
+# C1, C8 #A7C957
+par.bar(hbn.index, hbn.values, width=0.5, alpha=0.9, color='#DFDFE2', label=' Hubei: '+hb_start_day+'~'+hb_end_day)
+par.bar(itn.index+w, itn.values, width=w, alpha=0.9, color='#2b92e4', label='France: '+it_start_day+'~'+it_end_day)
+
 
 host.set_ylim(ymin=0, ymax=0.09)
 host.set_ylabel('Probability (New / Total)')

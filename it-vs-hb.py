@@ -21,7 +21,7 @@ hbn['2020-02-12'] = 1508	# Lab-confirmed cases, filter the Clinically diagnosed 
 hbn = hbn[:-1]		# start at 2020-01-10 vs. start at 2020-02-17
 itn = itn[:-17]
 hb_start_day = '2020-01-10'
-it_start_day = '2020-02-17'
+it_start_day = '2020-02-16'
 
 #hbn = hbn[:-5]		# start at 2020-01-14 vs. start at 2020-02-22
 #itn = itn[:-22]
@@ -55,13 +55,13 @@ hb_end_day = hb_day_range[il-1].strftime('%m/%d')
 host = host_subplot(111)
 par = host.twinx()
 
-plt.title('New confirmed cases of COVID-19 (Italy vs. Hubei)')
+plt.title('New confirmed cases of COVID-19 (Italy vs. Hubei)\n', {'fontsize':13, 'fontweight':'light','color': '#222222', 'verticalalignment':'top'})
 
 #bns=np.arange(-0.5,l+0.5,1)
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
 w = 0.5
 # C1, C8 #A7C957
-par.bar(hbn.index, hbn.values, width=0.5, alpha=0.95, color='#A7C957', label='Hubei: '+hb_start_day+'~'+hb_end_day)
+par.bar(hbn.index, hbn.values, width=0.5, alpha=0.5, color='#A7C957', label='Hubei: '+hb_start_day+'~'+hb_end_day)
 #par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#FA9500', label='Italy')
 par.bar(itn.index+w, itn.values, width=w, alpha=1, color='C1', label='  Italy: '+it_start_day+'~'+it_end_day)
 #par.bar(itn.index+w, itn.values, width=w, alpha=0.95, color='#BC4749', label='Italy')
