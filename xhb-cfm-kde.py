@@ -56,7 +56,7 @@ host.set_ylim(ymin=0, ymax=0.0725)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
-plt.xlim(xmin=-5, xmax=50)
+plt.xlim(xmin=-5, xmax=65)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
