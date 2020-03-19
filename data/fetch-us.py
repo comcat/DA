@@ -10,20 +10,29 @@ from datetime import datetime
 now = datetime.now()
 today = datetime(now.year, now.month, now.day)
 
-pre_day = today - Day()
-.strftime('%Y%m%d')
-
 url = "https://covidtracking.com/api/us/daily?date="
 
-resp = requests.get(url)
+#resp = requests.get(url)
 #'{"date":20200317,"states":56,"positive":5723,"negative":47604,"posNeg":53327,"pending":815,"death":90,"total":54085}'
-resp.json()
-
+#resp.json()
 
 df = pd.read_csv("us.csv",index_col='Date',parse_dates=True)
 
+last = df.index[-1]
+it = last + Day()
+
 # need update the csv
-if pre_day > df.index[-1]:
+while it <= today:
+	resp = requests.get(url+it.strftime('%Y%m%d'))
+	d = resp.json()
 
+	if len(d) > 5:
+		last_cfm = df.loc[last]['Confirmed']
+		last_dea = df.loc[last]['Deaths']
+		idx = pd.to_datetime(d['date'],format='%Y%m%d')
+		df.loc[idx] = [d['positive'], d['positive']-last_cfm, d['death'], d['death']-last_dea]
 
-df.to_csv("usx.csv")
+	it += Day()
+
+#print(df)
+df.to_csv("us.csv",date_format='%Y%m%d')
