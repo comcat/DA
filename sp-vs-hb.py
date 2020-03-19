@@ -8,7 +8,11 @@ import matplotlib.dates as mdate
 
 from mpl_toolkits.axes_grid1 import host_subplot
 
-plt.figure(figsize=(12,40))
+plt.rcParams['legend.fontsize'] = 'x-large'
+plt.rcParams['ytick.labelsize'] = 13
+
+plt.figure(figsize=(14.4,21.6))
+#plt.figure(figsize=(11.25,24.36))
  
 hb = pd.read_csv("./data/ncp-hb-new.csv", skipinitialspace=True, index_col='Date', parse_dates=True)
 it = pd.read_csv("./data/covid-19-who/Spain.csv", skipinitialspace=True, index_col='Date', parse_dates=True)
@@ -55,16 +59,14 @@ hb_end_day = hb_day_range[il-1].strftime('%m/%d')
 host = host_subplot(111)
 par = host.twinx()
 
-plt.title('New confirmed cases of COVID-19 (Spain vs. Hubei)\n', {'fontsize':13, 'fontweight':'light','color': '#222222', 'verticalalignment':'top'})
+plt.title('New confirmed cases of COVID-19 (Spain vs. Hubei)\n', {'fontsize':17, 'fontweight':'bold','color': '#3d3d3d', 'verticalalignment':'top'})
 
 #bns=np.arange(-0.5,l+0.5,1)
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
 w = 0.5
 # C1, C8 #A7C957
 par.bar(hbn.index, hbn.values, width=0.5, alpha=0.8, color='#DFDFE3', label='Hubei: '+hb_start_day+'~'+hb_end_day)
-#par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#FA9500', label='United Kingdom')
 par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#E25A53', label='Spain: '+it_start_day+'~'+it_end_day)
-#par.bar(itn.index+w, itn.values, width=w, alpha=0.95, color='#BC4749', label='United Kingdom')
 
 
 x = hbn.index.repeat(hbn)
@@ -76,28 +78,34 @@ px = pd.Series(x)
 px.plot.kde(bw_method=h2, color='#DFDFE3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.5)
 
 host.set_ylim(ymin=0, ymax=0.09)
-host.set_ylabel('Probability (New / Total)')
+host.set_ylabel('Probability (New / Total)',{'fontsize':14})
 
-par.set_ylabel('Number of new confirmed cases')
+par.set_ylabel('Number of cases',{'fontsize':14})
 
 plt.xlim(xmin=0, xmax=65)
-
 #plt.ylim(ymax=3000)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
-ax.set_xticklabels(ii)
+ax.set_xticklabels(ii,{'fontsize':13})
 
-ax.annotate('Data Source: WHO, China CDC, European Centre of Disease Prevention',
+ax.annotate('Data Source: WHO, China CDC, European Centre of Disease Prevention.  Analysis by: Jack Tan',
 			xy=(1, 0), xycoords='axes fraction',
-            xytext=(-10, -80), textcoords='offset pixels',
+            xytext=(0, -116), textcoords='offset pixels',
             horizontalalignment='right',
             verticalalignment='bottom',
-			fontsize=12)
+			fontsize=14)
 
 plt.gcf().autofmt_xdate()
-#plt.xticks(rotation=45)
-plt.legend()
-plt.grid(linewidth=0.5)
 
-plt.show()
+# rect = (left,bottom,right,top)
+plt.tight_layout(pad=1.6, rect=(0.03,-0.03,0.97,0.96))
+
+plt.legend()
+
+plt.grid(linewidth=0.5,alpha=0.6)
+
+ofname = "export/sp-vs-hb-" + it_day_range[il-1].strftime('%m%d') + '.png'
+
+plt.savefig(ofname, dpi=120)
+#plt.show()
