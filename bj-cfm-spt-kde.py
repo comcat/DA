@@ -56,7 +56,7 @@ host.set_ylim(ymin=0, ymax=0.082)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
-plt.xlim(xmin=-15, xmax=55)
+plt.xlim(xmin=-15, xmax=60)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
@@ -88,7 +88,7 @@ host.set_ylim(ymin=0, ymax=0.14)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
-plt.xlim(xmin=-15, xmax=55)
+plt.xlim(xmin=-15, xmax=60)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
@@ -122,7 +122,7 @@ host.set_ylim(ymin=0, ymax=0.08)
 host.set_ylabel('Probability (Today / Total)', {'fontsize':9, 'color': '#222222'})
 par.set_ylabel('Number of cases')
 
-plt.xlim(xmin=-15, xmax=55)
+plt.xlim(xmin=-15, xmax=60)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
