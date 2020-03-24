@@ -57,7 +57,7 @@ plt.title('New confirmed cases of COVID-19 (United States vs. Hubei)\n', {'fonts
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
 w = 0.5
 # C1, C8 #A7C957
-par.bar(hbn.index, hbn.values, width=0.5, alpha=0.1, color='#1d70b8', label='Hubei: '+hb_start_day+'~'+hb_end_day)
+par.bar(hbn.index, hbn.values, width=0.5, alpha=0.3, color='#1d70b8', label='Hubei: '+hb_start_day+'~'+hb_end_day)
 par.bar(itn.index+w, itn.values, width=w, alpha=1, color='#d5281b', label='   USA: '+it_start_day+'~'+it_end_day)
 
 
@@ -66,9 +66,13 @@ h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.79
 px = pd.Series(x)
 #px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
-px.plot.kde(bw_method=h2, color='#DFDFE3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.5)
+px.plot.kde(bw_method=h2, color='#DFDFE3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.3)
+
+# 0.09/5k * 9k
+#host.set_ylim(ymin=0, ymax=0.16)
 
 host.set_ylim(ymin=0, ymax=0.09)
+
 host.set_ylabel('Probability (New / Total)',{'fontsize':14})
 
 par.set_ylabel('Number of cases',{'fontsize':14})

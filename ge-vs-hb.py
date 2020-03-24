@@ -65,7 +65,7 @@ plt.title('New confirmed cases of COVID-19 (Germany vs. Hubei)\n', {'fontsize':1
 #par.hist(x, bins=bns, rwidth=0.9, alpha=0.4)
 w = 0.5
 # C1, C8 #A7C957
-par.bar(hbn.index, hbn.values, width=0.5, alpha=0.1, color='#d5281b', label='    Hubei: '+hb_start_day+'~'+hb_end_day)
+par.bar(hbn.index, hbn.values, width=0.5, alpha=0.3, color='#d5281b', label='    Hubei: '+hb_start_day+'~'+hb_end_day)
 par.bar(itn.index+w, itn.values, width=w, alpha=.98, color='#0b0c0c', label='Germany: '+it_start_day+'~'+it_end_day)
 
 

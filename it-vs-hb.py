@@ -73,9 +73,9 @@ par.bar(itn.index+w, itn.values, width=w, alpha=.83, color='C2', label='  Italy:
 
 x = hbn.index.repeat(hbn)
 h1 = len(x)**(-1.0/5.0)
-h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.79
+h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.59
 px = pd.Series(x)
-px.plot.kde(bw_method=h2, color='C3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.2)
+px.plot.kde(bw_method=h2, color='C3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.1)
 
 host.set_ylim(ymin=0, ymax=0.09)
 host.set_ylabel('Probability (New / Total)',{'fontsize':14})
