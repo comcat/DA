@@ -24,13 +24,15 @@ it = last + Day()
 # need update the csv
 while it <= today:
 	resp = requests.get(url+it.strftime('%Y%m%d'))
-	d = resp.json()
 
-	if len(d) > 5:
-		last_cfm = df.loc[last]['Confirmed']
-		last_dea = df.loc[last]['Deaths']
-		idx = pd.to_datetime(d['date'],format='%Y%m%d')
-		df.loc[idx] = [d['positive'], d['positive']-last_cfm, d['death'], d['death']-last_dea]
+	if resp.ok:
+		d = resp.json()
+
+		if len(d) > 5:
+			last_cfm = df.loc[last]['Confirmed']
+			last_dea = df.loc[last]['Deaths']
+			idx = pd.to_datetime(d['date'],format='%Y%m%d')
+			df.loc[idx] = [d['positive'], d['positive']-last_cfm, d['death'], d['death']-last_dea]
 
 	it += Day()
 
