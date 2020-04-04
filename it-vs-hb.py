@@ -82,11 +82,12 @@ host.set_ylabel('Probability (New / Total)',{'fontsize':14})
 
 par.set_ylabel('Number of cases',{'fontsize':14})
 
-plt.xlim(xmin=0, xmax=65)
+XM = int(hl/5) * 5
+plt.xlim(xmin=0, xmax=XM)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
-ax.set_xticklabels(ii,{'fontsize':13})
+ax.set_xticklabels(ii,{'fontsize':13, 'alpha':0.5})
 
 ax.annotate('Data Source: WHO, China CDC, European Centre of Disease Prevention.  Analysis by: Jack Tan',
 			xy=(1, 0), xycoords='axes fraction',
