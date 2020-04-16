@@ -75,9 +75,15 @@ par.bar(hbn.index, hbn.values, width=0.5, alpha=0.8, color='#DFDFE2', label=' Hu
 par.bar(itn.index+w, itn.values, width=w, alpha=0.9, color='#2b92e4', label='France: '+it_start_day+'~'+it_end_day)
 
 
-host.set_ylim(ymin=0, ymax=0.09)
-host.set_ylabel('Probability (New / Total)',{'fontsize':14})
-par.set_ylabel('Number of cases',{'fontsize':14})
+ym=0.5
+#yl = np.arange(0, ym+0.1, 0.1)
+yl = [0,0.1,0.2,0.3,0.4,0.5]
+
+host.set_ylim(ymin=0, ymax=ym)
+host.set_yticklabels(yl, {'fontsize':13, 'alpha':0.5})
+
+host.set_ylabel('Probability (New / Total)',{'fontsize':14, 'alpha':0.5})
+par.set_ylabel('Number of cases',{'fontsize':14, 'alpha':0.8})
 
 XM = int(hl/5) * 5
 plt.xlim(xmin=0, xmax=XM)

@@ -20,7 +20,7 @@ us = pd.read_csv("./data/us.csv", skipinitialspace=True, index_col='Date', parse
 cnn = cn['Confirmed']
 usn = us['New Confirmed']
 
-cnn['2020-02-12'] = 1508	# Lab-confirmed cases, filter the Clinically diagnosed (exception number)
+#cnn['2020-02-12'] = 1508	# Lab-confirmed cases, filter the Clinically diagnosed (exception number)
 
 cnn = cnn[:-1]		# start at 2020-01-10 (1/15) vs. start at 2020-02-29 (3/5)
 itn = usn[35:]
@@ -66,16 +66,21 @@ h1 = len(x)**(-1.0/5.0)
 h2 = 1.06 * np.std(x) * len(x)**(-1.0/5.0) - 0.79
 px = pd.Series(x)
 #px.plot.kde(bw_method=h1, color='C1', label='KDE (h='+str(format(h1,'.2f'))+')', linewidth=0.9, alpha=0.4)
-px.plot.kde(bw_method=h2, color='#DFDFE3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.3)
+px.plot.kde(bw_method=h2, color='#DFDFE3', label='KDE (h='+str(format(h2,'.2f'))+')', linewidth=0.9, alpha=0.5)
+
+ym=0.5
+#yl = np.arange(0, ym+0.1, 0.1)
+yl = [0,0.1,0.2,0.3,0.4,0.5]
 
 # 0.09/5k * 9k
 #host.set_ylim(ymin=0, ymax=0.16)
+#host.set_ylim(ymin=0, ymax=0.09)
 
-host.set_ylim(ymin=0, ymax=0.09)
+host.set_ylim(ymin=0, ymax=ym)
+host.set_yticklabels(yl, {'fontsize':13, 'alpha':0.5})
 
-host.set_ylabel('Probability (New / Total)',{'fontsize':14})
-
-par.set_ylabel('Number of cases',{'fontsize':14})
+host.set_ylabel('Probability (New / Total)',{'fontsize':14, 'alpha':0.5})
+par.set_ylabel('Number of cases',{'fontsize':14, 'alpha':0.8})
 
 XM = int(hl/5) * 5
 plt.xlim(xmin=0, xmax=XM)
