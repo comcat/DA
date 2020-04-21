@@ -41,6 +41,13 @@ print("fr: ", frd/frc*100, "%")
 print("uk: ", ukd/ukc*100, "%")
 print("us: ", usd/usc*100, "%")
 
+# start from 02-01
+us = us[9:]
+it = it[:-3] 
+ge = ge[:-5]
+fr = fr[:-7]
+uk = uk[:-2]
+
 usc = us['Confirmed']
 itc = it['Confirmed']
 spc = sp['Confirmed']
@@ -61,7 +68,18 @@ plt.figure(figsize=(14.4,21.6))
 
 plt.title('Crude Case Fatality Ratio (%)\n', {'fontsize':17, 'fontweight':'bold','color': '#0b0c0c', 'verticalalignment':'top'})
 
-plt.plot(usd/usc*100, 'C1', label='United States',marker='o')
+#plt.plot(usd/usc*100, 'C1', label='United States',marker='.')
+#plt.plot(ukd/ukc*100, 'C3', label='United Kingdom',marker='.')
+#plt.plot(itd/itc*100, 'C2', label='Italy',marker='.')
+#plt.plot(ged/gec*100, 'C7', label='Germany',marker='.')
+#plt.plot(frd/frc*100, 'C0', label='France',marker='.')
+
+plt.plot(usd/usc*100, 'C1', label='United States',marker=' ')
+plt.plot(ged/gec*100, 'C7', label='Germany',marker=' ')
+plt.plot(frd/frc*100, 'C0', label='France',marker=' ')
+plt.plot(ukd/ukc*100, 'C3', label='United Kingdom',marker=' ')
+plt.plot(itd/itc*100, 'C2', label='Italy',marker=' ')
+plt.plot(spd/spc*100, 'C8', label='Spain',marker=' ')
 
 plt.ylabel('%',{'fontsize':14})
 plt.grid(linewidth=0.6,alpha=0.6)
