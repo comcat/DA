@@ -88,7 +88,7 @@ plt.xlim(xmin=0, xmax=XM)
 
 ax = plt.gca()
 ax.set_xticks(xtk)
-ax.set_xticklabels(ii,{'fontsize':13, 'alpha':0.5})
+ax.set_xticklabels(ii,{'fontsize':13, 'alpha':0.2})
 
 ax.annotate('Data Source: The COVID Tracking Project, WHO, China CDC.  Analysis by: Jack Tan',
 			xy=(1, 0), xycoords='axes fraction',
