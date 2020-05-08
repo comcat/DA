@@ -33,6 +33,7 @@ while it <= today:
 			last_dea = df.loc[last]['Deaths']
 			idx = pd.to_datetime(d['date'],format='%Y%m%d')
 			df.loc[idx] = [d['positive'], d['positive']-last_cfm, d['death'], d['death']-last_dea]
+			last = df.index[-1]
 
 	it += Day()
 
